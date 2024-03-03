@@ -1,0 +1,23 @@
+# This file generates the GitHub Actions matrix.
+# For simple board + shield combinations, add them to the top level board and
+# shield arrays, for more control, add individual board + shield combinations
+# to the `include` property. You can also use the `cmake-args` property to
+# pass flags to the build command and `artifact-name` to assign a name to
+# distinguish build outputs from each other:
+#
+
+# using seeeduino_xiao_ble
+# using shield cf_testboard
+include:
+  # - board: nice_nano_v2
+  #   shield: cf_testboard_left cf_oled_128x32
+  # - board: nice_nano_v2
+  #   shield: cf_testboard_slaveleft cf_oled_128x32
+  # - board: seeeduino_xiao_ble
+  #   shield: cf_testboard_master cf_oled_128x64
+  # - board: nice_nano_v2
+  #   shield: cf_testboard_right
+  # - board: nice_nano_v2
+  #   shield: settings_reset
+  # - board: seeeduino_xiao_ble
+  #   shield: settings_reset

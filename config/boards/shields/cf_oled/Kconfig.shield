@@ -1,0 +1,12 @@
+# Copyright (c) 2019 Linaro Limited
+# SPDX-License-Identifier: Apache-2.0
+
+config SHIELD_CF_OLED_128X32
+	def_bool $(shields_list_contains,cf_oled_128x32)
+
+config SHIELD_CF_OLED_128X64
+	def_bool $(shields_list_contains,cf_oled_128x64)
+
+
+config SHIELD_SH1106_128X64
+	def_bool $(shields_list_contains,sh1106_128x64)

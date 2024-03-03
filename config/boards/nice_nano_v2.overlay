@@ -1,0 +1,3 @@
+
+
+oled_i2c: &pro_micro_i2c {};

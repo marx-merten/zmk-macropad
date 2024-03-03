@@ -1,0 +1,3 @@
+
+
+oled_i2c: &xiao_i2c {};
