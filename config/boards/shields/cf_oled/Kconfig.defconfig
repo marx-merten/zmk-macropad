@@ -2,8 +2,9 @@
 # SPDX-License-Identifier: Apache-2.0
 
 if SHIELD_CF_OLED_128X32 || SHIELD_CF_OLED_128X64 || SHIELD_SH1106_128X64
-
 if DISPLAY
+
+if LVGL
 
 config SSD1306
 	default y
@@ -11,19 +12,10 @@ config SSD1306
 config I2C
 	default y
 
-config SSD1306_REVERSE_MODE
-	default y
-
-choice SSD1306_CONTROLLER_TYPE
-	default SSD1306_SH1106_COMPATIBLE if SHIELD_SH1106_128X64
-endchoice
-
-if LVGL
-
 config LV_Z_VDB_SIZE
 	default 64
 
-config LV_Z_DPI
+config LV_DPI_DEF
 	default 116 if SHIELD_SH1106_128X64
 	default 148
 

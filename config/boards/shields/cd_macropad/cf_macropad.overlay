@@ -1,0 +1,6 @@
+#include "cf_macropad.dtsi"
+
+
+&main_encoder {
+    status = "okay";
+};
