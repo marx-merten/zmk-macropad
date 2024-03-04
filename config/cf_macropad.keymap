@@ -2,20 +2,27 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    keymap {
-            compatible = "zmk,keymap";
+    combos {
+        compatible = "zmk,combos";
 
-            default_layer {
-                label = "Base";
-                bindings = <
-                    &kp A   &kp B   &kp C
-                    &kp D   &kp E   &kp F
-                    &kp G   &kp H   &kp I
-                >;
+        bootloader {
+            bindings = <&bootloader>;
+            key-positions = <6 8 3 5>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            label = "Base";
+            bindings = <
+&kp A  &kp B  &kp C
+&kp D  &kp E  &kp F
+&kp G  &kp H  &kp I
+            >;
 
             sensor-bindings = <&inc_dec_kp O P>;
-
-
-            };
+        };
     };
 };
