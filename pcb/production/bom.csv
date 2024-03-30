@@ -1,0 +1,11 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+"D1, D2, D3, D4, D5, D6, D7, D8, D9",D_SOD-123,9,Diode,C493190
+DSP1,OLED_128x32,1,OLED_128x32,
+J1,JST_PH_S2B-PH-K_1x02_P2.00mm_Horizontal,1,Bat,
+Logo,OSSLogo,1,Claw Dongle v.2,
+"S1, S2, S3, S4, S5, S7, S8, S9",Kailh_socket_PG1350,8,Choc,C5333465
+S6,RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm,1,Choc,
+SW1,SW_SPST_EVQP7A,1,SW_Reset,C2917474
+TP1,TestPoint_Pad_1.5x1.5mm,1,BAT+,
+TP2,TestPoint_Pad_1.5x1.5mm,1,GND,
+U1,xiao-ble-smd-cutout,1,SeeeduinoXIAO,

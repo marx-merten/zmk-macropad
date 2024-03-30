@@ -1,3 +1,5 @@
 build/*
 build
 firmware
+pcb/*-backups
+.DS_Store

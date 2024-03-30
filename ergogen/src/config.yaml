@@ -1,0 +1,199 @@
+units:
+  # Proxy Spacing Variables
+  kx: u
+  ky: u
+  px: 14
+  py: 14
+  #board outer padding
+  bx: u+6
+  by: u+6
+  $default_height: cy
+  $default_width: cx
+  dspSpace: 1.2ky
+  tapwidth: 3
+  tapdistance: 8
+points:
+  zones:
+    matrix:
+      key:
+        padding: 1ky
+        spread: 1.2kx
+      columns:
+        left:
+        middle:
+        right:
+      rows:
+        bottom:
+        home:
+        top:
+          shift: [0, dspSpace]
+    mount:
+      anchor:
+        aggregate.parts:
+          - ref: matrix_left_top
+          - ref: matrix_middle_top
+        shift: [0, .5ky]
+      key:
+        height: 2
+        width: 2
+        spread: 1.2kx
+        padding: -2ky-dspSpace
+      columns:
+        left:
+        right:
+      rows:
+        top:
+        bottom:
+      mirror:
+        ref: matrix_right_top
+        distance: .5tapdistance+kx+.5tapdistance
+
+outlines:
+  keys:
+    k:
+      what: rectangle
+      where: "/^matrix_/"
+      size: [cx, cy]
+    m:
+      what: circle
+      where: "/mount_/"
+      radius: 2
+      operation: stack
+    m2:
+      what: circle
+      where: "/mount_/"
+      radius: 1
+      operation: stack
+
+  keysPlate:
+    keyplates:
+      what: rectangle
+      where: "/^matrix_/"
+      size: [px, py]
+    encoder:
+      what: rectangle
+      where: "/^matrix_middle_top/"
+      size: [px, py]
+
+  surround:
+    - what: polygon
+      fillet: 2
+      points:
+        - ref: matrix_left_top
+          shift: [-.5bx, .5by]
+        - ref: matrix_right_top
+          shift: [.5bx, .5by]
+        - ref: matrix_right_bottom
+          shift: [.5bx, -.5by]
+        - ref: matrix_left_bottom
+          shift: [-.5bx, -.5by]
+  prints:
+    oledWindowPrint:
+      what: rectangle
+      size: [40, 13]
+      operation: stack
+      adjust:
+        aggregate:
+          parts:
+            - ref: mount_right_top
+            - ref: mount_left_top
+        shift: [0, -.5dspSpace-ky]
+  board:
+    surroundLeft:
+      what: polygon
+      fillet: 2
+      points:
+        - ref: matrix_left_top
+          shift: [-.5bx, .5by]
+        - ref: matrix_right_top
+          shift: [.5bx, .5by]
+        - ref: matrix_right_bottom
+          shift: [.5bx, -.5by]
+        - ref: matrix_left_bottom
+          shift: [-.5bx, -.5by]
+    sright:
+      what: outline
+      name: "surround"
+      adjust:
+        ref: matrix_right_bottom
+        shift: [kx+tapdistance, 0]
+    oledWindow:
+      what: rectangle
+      size: [40, 13]
+      operation: stack
+      adjust:
+        aggregate:
+          parts:
+            - ref: mirror_mount_right_top
+            - ref: mirror_mount_left_top
+        shift: [0, -.5dspSpace-ky]
+
+    #   Enable this for mount hole and
+    #  keys preview
+    #
+    #    keys1:
+    #      what: outline
+    #      name: "keys"
+    #      operation: stack
+    keyholes:
+      what: outline
+      name: "keysPlate"
+      operation: stack
+      adjust:
+        ref: matrix_right_bottom
+        shift: [kx+tapdistance, 0]
+
+    mike2:
+      what: rectangle
+      adjust:
+        ref: matrix_right_top
+        shift: [.5kx+.5tapdistance, 0]
+      size: [tapdistance, tapwidth]
+    tap2:
+      what: rectangle
+      adjust:
+        ref.aggregate.parts: [matrix_right_top, matrix_right_bottom]
+        shift: [.5kx+.5tapdistance, 0]
+      size: [tapdistance, tapwidth]
+    tap3:
+      what: rectangle
+      adjust:
+        ref: matrix_right_bottom
+        shift: [.5kx+.5tapdistance, 0]
+      size: [tapdistance, tapwidth]
+  debug:
+    - "keys"
+    - "^board"
+    - "^prints"
+pcbs:
+  main:
+    outlines:
+      main:
+        outline: board
+      prints:
+        outline: prints
+        layer: "F.SilkS"
+    footprints:
+        keys:
+          where: "/^matrix_/"
+          what: placeholder
+          params:
+            designator: "S"
+            label: "KEY"
+        oled:
+          adjust:
+            aggregate:
+              parts:
+                - ref: mount_right_top
+                - ref: mount_left_top
+            shift: [0, -.5dspSpace-ky]
+          what: placeholder
+          params:
+            designator: "DSP"
+            label: "OLED"
+        mounting:
+          where: "/mount_/"
+          what: placeholder
+          params:
+            designator: "M"
+            label: "MOUNT"

@@ -1,0 +1,20 @@
+{
+  "name": "bits_paw",
+  "version": "1.0.0",
+  "description": "Keyboard",
+  "main": "index.js",
+  "scripts": {
+    "generate": "ergogen ./src/ -o out",
+    "generateFull": "ergogen ./src/ -o out --debug",
+    "clean": "rm -rf out"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ergogen": "^4.0.5"
+  },
+  "volta": {
+    "node": "20.11.1",
+    "npm": "10.4.0"
+  }
+}
